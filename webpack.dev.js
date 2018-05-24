@@ -7,7 +7,10 @@ module.exports = merge(common, {
     devServer: {
         // contentBase: './dist',
         contentBase: path.join(__dirname, 'dist'),
+
+        // set port
         port: 3000,
+        // Reload serve when files changed
         watchContentBase: true,
     },
 });

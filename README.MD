@@ -27,7 +27,7 @@ $ npm i html-webpack-plugin -D
 ====================================
 Setting up CSS
 $ npm i css-loader style-loader -D
-For sass: $ npm install sass-loader -D
+For sass: $ npm install node-sass sass-loader  -D
 ====================================
 III. Setting up webpack-dev-server
 1. $ npm i webpack-dev-server -D
