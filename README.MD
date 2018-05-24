@@ -40,11 +40,7 @@ III. Setting up webpack-dev-server
 IV. References
 1. Add rule into webpack.confif.js
 - SCSS
-{
-    //SCSS LOADER
-    test: /\.scss$/,
-    loaders: ['style-loader', 'css-loader', 'sass-loader?indentedSyntax']
-}
+https://github.com/webpack-contrib/sass-loader
 - Images
 {
     test: /.*\.(gif|png|jpe?g|svg)$/i,
@@ -57,3 +53,16 @@ IV. References
         },
     ]
 }
+======================================
+======================================
+New Webpack
+1. Create webpack-common.js, webpack.dev.js and webpack.prod.js, remove webpack.config.js
+- $ npm install --save-dev webpack-merge
+- $ npm i --save-dev clean-webpack-plugin
+- in package.js, script change:
+"scripts": {
++     "start": "webpack-dev-server --open --config webpack.dev.js",
++     "build": "webpack --config webpack.prod.js"
+
+- UglifyjsWebpackPlugin
+$ npm i -D uglifyjs-webpack-plugin

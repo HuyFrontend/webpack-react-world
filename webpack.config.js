@@ -7,15 +7,13 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
-                // exclude: /node_modules/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
                 }
-            },
-            {
+            }, {
                 test: /\.css$/,
                 use: [
                     {
@@ -32,14 +30,12 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                //SCSS LOADER
+            }, {
                 test: /\.scss$/,
                 use: [
-                    {
-                        loaders: ['style-loader', 'css-loader', 'sass-loader?indentedSyntax']
-                    }
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS
                 ]
             }
         ]
