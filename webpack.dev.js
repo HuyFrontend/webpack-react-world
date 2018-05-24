@@ -7,6 +7,7 @@ module.exports = merge(common, {
     devServer: {
         // contentBase: './dist',
         contentBase: path.join(__dirname, 'dist'),
-		port: 3000,
+        port: 3000,
+        watchContentBase: true,
     },
 });

@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import style from './index.css';
 
 const Index = () => {
-  return <div>Hello React!</div>;
+  return <div>
+    Hello React Harry Vo!
+    </div>;
 };
 
 ReactDOM.render(<Index />, document.getElementById('index'));
