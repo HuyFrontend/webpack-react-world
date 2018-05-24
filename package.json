@@ -1,14 +1,15 @@
 {
-  "name": "webpack-world",
+  "name": "webpack-react-world",
   "version": "1.0.0",
-  "description": "webpack 4 application",
+  "description": "build application with webpack webpack config",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "keywords": [
-    "webpack",
+    "webpack config",
+    "react",
     "huyvoxuan"
   ],
   "author": "huy.vo",
