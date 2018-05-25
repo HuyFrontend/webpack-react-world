@@ -45,10 +45,15 @@ const reducerSelectedFamilyMember = (state = 'FATHER', action) => {
 
 export function selectSub(sub) {
 	console.log('selectSub', sub)
-    return {
+	const a = {
         type: sub,
         sub
-    }
+	};
+	console.log('return value', a);
+	return {
+        type: sub,
+        sub
+    };
 }
 
 const allReducers = combineReducers({ counter: reducerCounter, familyInfo: reducerFamilyMember, familyType: reducerSelectedFamilyMember });

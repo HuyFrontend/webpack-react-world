@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const loggerMiddleware = createLogger();
 
 const configureStore = (preloadedState) => {
+    console.log('process.env.NODE_ENV:', process.env, process.env.NODE_ENV);
     return createStore(
 		rootReducer, preloadedState, composeWithDevTools(
 			applyMiddleware(

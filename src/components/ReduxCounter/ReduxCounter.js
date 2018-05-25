@@ -9,12 +9,7 @@ class ReduxCounter extends Component {
     decrement = () => {
         this.props.dispatch({ type: 'DECREMENT' });
     }
-    fatherInfo = () => {
-        this.props.dispatch({ type: 'FATHER' });
-    }
-    childInfo = () => {
-        this.props.dispatch({ type: 'CHILD' });
-    }
+
     setFamilyType = (familyType) => {
         console.log('Type', familyType);
         this.props.dispatch(selectSub(familyType));
