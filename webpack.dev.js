@@ -5,12 +5,9 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        // contentBase: './dist',
         contentBase: path.join(__dirname, 'dist'),
-
-        // set port
-        port: 3000,
-        // Reload serve when files changed
-        watchContentBase: true,
-    },
+        compress: true,
+        port: 9000,
+        watchContentBase: true
+    }
 });

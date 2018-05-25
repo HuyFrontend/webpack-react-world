@@ -24,7 +24,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    query: {
+                        presets: ['react', 'es2015'],
+                        plugins: ['transform-class-properties']
+                    }
                 }
             }, {
                 test: /\.css$/,
@@ -38,7 +42,9 @@ module.exports = {
                 {
                     loader: 'file-loader',
                     options: {
-                        name: '[path][name].[ext]',
+                        // name: '[path][name].[ext]',
+                        // name: 'dirname/[hash].[ext]',
+                        name: '[name].[ext]',
                         outputPath: 'images/'
                     }
                 }]
