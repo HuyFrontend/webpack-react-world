@@ -43,15 +43,41 @@ const reducerFamilyMember = (state = info, action) => {
 //     }
 // };
 
+const reducerBookList = (state = [{name: 'Book Title'}], action) => {
+	console.log(' init reducerBookList');
+	switch (action.type) {
+		case 'LOAD':
+			debugger;
+			return getItemByCategory(action.category);
+        default:
+            return state;
+    }
+};
+
+function getItemByCategory(categoryName) {
+		return
+		fetch(`https://www.reddit.com/r/${categoryName}.json`)
+        .then(response => response.json())
+        .then((json) => {
+			console.log('json');
+                return json;
+        });
+}
+
 export function selectSub(sub) {
 	return {
         type: sub,
     };
 }
 
+export function selectCatrgory(value) {
+	return { tpye: 'LOAD', category: value };
+}
+
 const allReducers = combineReducers({
 	counter: reducerCounter,
 	familyInfo: reducerFamilyMember,
-	// familyType: reducerSelectedFamilyMember
+	// familyType: reducerSelectedFamilyMember,
+	listByCategory: reducerBookList
 });
 export default allReducers;

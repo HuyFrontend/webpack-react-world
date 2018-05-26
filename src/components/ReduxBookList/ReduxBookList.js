@@ -30,9 +30,9 @@ class ReduxBookList extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log('state', state);
+    console.log('state listByCategory', state);
     return {
-        bookList: '' //state.bookList
+        bookList: state.listByCategory
     };
 };
 
