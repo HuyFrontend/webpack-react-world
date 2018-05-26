@@ -34,27 +34,24 @@ const reducerFamilyMember = (state = info, action) => {
 			return state;
 	}
 };
-const reducerSelectedFamilyMember = (state = 'FATHER', action) => {
-    switch (action.type) {
-        case 'FATHER':
-            return 'FATHER';
-        default:
-            return 'CHILD';
-    }
-};
+// const reducerSelectedFamilyMember = (state = 'FATHER', action) => {
+//     switch (action.type) {
+//         case 'FATHER':
+//             return 'FATHER';
+//         default:
+//             return 'CHILD';
+//     }
+// };
 
 export function selectSub(sub) {
-	console.log('selectSub', sub)
-	const a = {
-        type: sub,
-        sub
-	};
-	console.log('return value', a);
 	return {
         type: sub,
-        sub
     };
 }
 
-const allReducers = combineReducers({ counter: reducerCounter, familyInfo: reducerFamilyMember, familyType: reducerSelectedFamilyMember });
+const allReducers = combineReducers({
+	counter: reducerCounter,
+	familyInfo: reducerFamilyMember,
+	// familyType: reducerSelectedFamilyMember
+});
 export default allReducers;

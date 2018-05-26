@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import ReduxCounter from './components/ReduxCounter/ReduxCounter';
 import configureStore from './stores/configStore';
+import ReduxCounter from './components/ReduxCounter/ReduxCounter';
+// import ReduxBookList from './components/ReduxBookList/ReduxBookList';
 
 const store = configureStore();
 console.log('store', store.getState());
@@ -18,6 +18,7 @@ class ReduxContainer extends React.Component {
       <div className="WebpackApp">
         <Provider store={store}>
 					<ReduxCounter/>
+          {/* <ReduxBookList/> */}
         </Provider>
       </div>
     );

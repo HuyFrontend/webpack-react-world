@@ -127,3 +127,29 @@ use: {
     }
 }
 - ref https://babeljs.io/docs/plugins/transform-class-properties/
+=======================================
+### Optimization
+1. To minimize your scripts (and your css, if you use the css-loader) webpack supports a simple option:
+--optimize-minimize resp. new webpack.optimize.UglifyJsPlugin()
+2. Deduplication
+--optimize-dedupe resp. new webpack.optimize.DedupePlugin()
+3. Chunks
+After compiling you might notice that there are too many chunks that are too small - creating larger HTTP overhead. Luckily, Webpack can post-process your chunks by merging them. You can provide two options:
+Limit the maximum chunk count with --optimize-max-chunks 15 new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15})
+Limit the minimum chunk size with --optimize-min-chunk-size 10000 new webpack.optimize.MinChunkSizePlugin({minChunkSize: 10000})
+4. Single-Page-App
+<script src="entry-chunk.js" type="text/javascript" charset="utf-8"></script>
+<script src="3.chunk.js" type="text/javascript" charset="utf-8"></script>
+5. Multi-Page-App
+webpack p1=./page1 p2=./page2 p3=./page3 [name].entry-chunk.js
+module.exports = {
+	entry: {
+		p1: "./page1",
+		p2: "./page2",
+		p3: "./page3"
+	},
+	output: {
+		filename: "[name].entry.chunk.js"
+	}
+}
+

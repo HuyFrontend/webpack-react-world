@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectSub } from '../../stores/allReducers';
+
+import ReduxBookList from '../ReduxBookList/ReduxBookList';
+
 class ReduxCounter extends Component {
     increment = () => {
         console.log('step 1 in redux, event handle');
@@ -38,6 +41,8 @@ class ReduxCounter extends Component {
                         </div>
                     </div>
                 </div>
+
+                <ReduxBookList/>
             </div>
         )
     }
@@ -51,4 +56,5 @@ const mapStateToProps = (state) => {
     };
 };
 
+// export default ReduxCounter;
 export default connect(mapStateToProps)(ReduxCounter);
