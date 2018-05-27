@@ -1,12 +1,31 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCatrgory, selectSub } from '../../stores/allReducers';
-const ButtonElememt = ({categories, selectCateGory}) => {
+import { selectCategoryType, selectFamilyType, removeBooklist } from '../../stores/allActions';
+const ButtonElememt = ({categories, selectCateGory, removeList}) => {
     const listItems = categories.map((item, i) =>
         <button key= {i} className={`item ${item}`} onClick={() => selectCateGory(item)}>{item.toUpperCase()}</button>
     );
     return (
-        <ul>{listItems}</ul>
+        <ul>
+            {listItems}
+            <button className={`item remove-all`} onClick={() => removeList()}>REMOVE</button>
+        </ul>
+    );
+};
+
+const ListElememt = ({list}) => {
+    const listItems = list.map((item, i) => {
+        return (
+            <li className="book-tiem" key={i}>
+                <h4>{item.title}</h4>
+                <p>Author: <strong>{item.author}</strong></p>
+                <p>Subreddit: {item.subreddit}</p>
+            </li>
+        );
+    });
+
+    return (
+        <ul className="listElement">{listItems}</ul>
     );
 };
 
@@ -15,16 +34,19 @@ class ReduxBookList extends Component {
         super(props);
     }
     selectCateName = (catName) => {
-        this.props.dispatch(selectCatrgory(catName));
-        // selectCatrgory(catName);
+        this.props.dispatch(selectCategoryType(catName));
+    }
+    onRemoveList = () => {
+        console.log('remove');
+        this.props.dispatch(removeBooklist());
     }
     render() {
-        const categories = ['javascript', 'react', 'angular', 'nodejs'];
-
+        const categories = ['javascript', 'reactjs', 'angular', 'nodejs'];
         return (
             <div className="book-container">
-                <ButtonElememt categories={categories} selectCateGory={(e) => this.selectCateName(e)}/>
-                <div className="item">
+                <ButtonElememt categories={categories} selectCateGory={(e) => this.selectCateName(e)} removeList={this.onRemoveList}/>
+                <div className="list-books">
+                    <ListElememt list={this.props.bookList}/>
                 </div>
             </div>
         );
@@ -33,7 +55,7 @@ class ReduxBookList extends Component {
 const mapStateToProps = (state) => {
     console.log('state listByCategory', state);
     return {
-        bookList: state.listByCategory
+        bookList: state.bookList && state.bookList.length ? state.bookList : []
     };
 };
 

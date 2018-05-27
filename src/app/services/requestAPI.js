@@ -8,14 +8,15 @@ const customHeaders = (token = '') => {
         const tokenHeader = {
             'Authorization': `Basic ${token}`,
         };
-        headerObj = {
-            ...defaultHeaders,
-            tokenHeader
-        }
+        headerObj = Object.assign({
+            defaultHeaders, tokenHeader
+        });
+        // headerObj = {
+        //     ...defaultHeaders,
+        //     tokenHeader
+        // }
     }
-    return new Headers({
-        ...headerObj
-    });
+    return new Headers(headerObj);
 };
 const jsonResponse = (res) => {
     if (!res.ok) {
@@ -25,7 +26,7 @@ const jsonResponse = (res) => {
     }
     return res.json();
 };
-export function getData(url) {
+export const getData = (url) => {
     const headers = customHeaders();
     return fetch(url, {
         headers: headers
@@ -33,6 +34,7 @@ export function getData(url) {
         return jsonResponse(res);
     });
 };
+
 export function postData(url, body, token) {
     const headers = customHeaders(token);
     return fetch(url, {
@@ -54,5 +56,17 @@ export function putData(url, body, token) {
     });
 };
 
-export default { getData, postData, putData }
+export const getDataDefault = (url) => {
+    return fetch(url)
+        .then((res) => {
+            return jsonResponse(res);
+        })
+        .then((json) => {
+            return json;
+        }).catch((err) => {
+
+        });
+};
+
+// export default { getData, postData, putData }
 

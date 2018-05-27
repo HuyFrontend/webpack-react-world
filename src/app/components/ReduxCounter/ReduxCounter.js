@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectFamilyType } from '../../stores/allReducers';
+import { selectFamilyType } from '../../stores/allActions';
 
 import ReduxBookList from '../ReduxBookList/ReduxBookList';
 
@@ -56,5 +56,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-// export default ReduxCounter;
 export default connect(mapStateToProps)(ReduxCounter);

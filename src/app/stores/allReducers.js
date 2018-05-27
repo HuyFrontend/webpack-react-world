@@ -36,52 +36,22 @@ const reducerFamilyMember = (state = info, action) => {
 };
 
 const reducerBookList = (state = [{name: 'Book Title'}], action) => {
-	console.log(' init reducerBookList');
+	console.log('reducerBookList', 'state', state);
 	switch (action.type) {
 		case 'LOAD':
-			// getItemByCategory(action.category);
-			return state; //getItemByCategory(action.category);
+			return state;
+		case 'LOADED':
+			return action.payLoad;
+		case 'REMOVE':
+			return [];
         default:
             return state;
     }
 };
 
-const getItemByCategory = (categoryName) => {
-		// return
-		fetch(`https://www.reddit.com/r/${categoryName}.json`)
-        .then(response => {
-			console.log('aaaaaaaaaaaaaa');
-			return response.json();
-		})
-        .then((json) => {
-			console.log('json', json);
-                return json;
-        }).catch((err) => {
-			console.log('errrro', err);
-
-		});
-}
-
-export const selectFamilyType = (value) => {
-	return {
-        type: value,
-    };
-}
-
-export const selectCatrgory = (value) => {
-	getItemByCategory(value);
-	console.log('selectCatrgory value', value);
-	return { type: 'LOAD', category: value };
-	// const action = { type: 'LOAD', category: value };
-	// return (dispatch) => {
-    //     return dispatch(action);
-    // }
-}
-
 const allReducers = combineReducers({
 	counter: reducerCounter,
 	familyInfo: reducerFamilyMember,
-	// familyType: reducerSelectedFamilyMember,
-	listByCategory: reducerBookList
+	bookList: reducerBookList
 });
 export default allReducers;
