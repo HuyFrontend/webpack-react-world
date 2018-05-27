@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-
+import 'bootstrap';
 import style from './index.css';
 import './index.scss';
 import windowiImgUrl from './assets/images/Screenshot_1.png';

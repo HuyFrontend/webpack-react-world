@@ -151,3 +151,8 @@ module.exports = {
 		filename: "[name].entry.chunk.js"
 	}
 }
+=======================================
+## Bootstrap npm package
+$ npm i --save-dev bootstrap jquery popper.js
+## Redux Observable
+$ npm install --save-dev redux-observable rxjs rxjs-compat

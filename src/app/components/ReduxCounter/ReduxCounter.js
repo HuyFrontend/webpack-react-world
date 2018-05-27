@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './ReduxCounter.scss';
 import { selectFamilyType } from '../../stores/allActions';
 
 import ReduxBookList from '../ReduxBookList/ReduxBookList';
-
+import Stories from '../Stories/Stories';
 class ReduxCounter extends Component {
     increment = () => {
         this.props.dispatch({ type: 'INCREMENT' });
@@ -20,9 +21,9 @@ class ReduxCounter extends Component {
             <div>
                 <div className="counter">
                     <h2>Counter Session</h2>
-                    <button onClick={this.decrement}>-</button>
+                    <button onClick={this.decrement} className={`btn btn-danger`}>-</button>
                     <span> {this.props.countProp} </span>
-                    <button onClick={this.increment}>+</button>
+                    <button onClick={this.increment} className={`btn btn-info`}>+</button>
                 </div>
 
                 <div className="Info">
@@ -32,13 +33,14 @@ class ReduxCounter extends Component {
                         <p> Age: {this.props.info.age}</p>
                         <p> Phone: {this.props.info.phone}</p>
                         <div className="action">
-                            <button onClick={() => this.setFamilyType('CHILD')}>Show Child</button>
-                            <button onClick={() => this.setFamilyType('FATHER')}>Show Father</button>
+                            <button onClick={() => this.setFamilyType('CHILD')} className={`btn btn-danger`}>Show Child</button>
+                            <button onClick={() => this.setFamilyType('FATHER')} className={`btn btn-info`}>Show Father</button>
                         </div>
                     </div>
                 </div>
 
                 <ReduxBookList/>
+                <Stories/>
             </div>
         )
     }
