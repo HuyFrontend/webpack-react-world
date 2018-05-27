@@ -151,4 +151,3 @@ module.exports = {
 		filename: "[name].entry.chunk.js"
 	}
 }
-

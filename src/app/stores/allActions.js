@@ -7,7 +7,7 @@ export const selectFamilyType = (value) => {
 
 export const selectCategoryType = (value) => {
     return (dispatch) => {
-        dispatch({type: 'LOAD'})
+        dispatch({ type: 'LOAD' })
         return getListByCategory(value).then((res) => {
             const data = res.data.children.map(child => child.data);
             return dispatch({ type: 'LOADED', payLoad: data});

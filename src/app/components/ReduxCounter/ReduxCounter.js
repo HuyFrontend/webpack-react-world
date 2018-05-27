@@ -19,7 +19,7 @@ class ReduxCounter extends Component {
         return (
             <div>
                 <div className="counter">
-                    <h2>Counter 1</h2>
+                    <h2>Counter Session</h2>
                     <button onClick={this.decrement}>-</button>
                     <span> {this.props.countProp} </span>
                     <button onClick={this.increment}>+</button>
