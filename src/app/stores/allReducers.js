@@ -33,7 +33,7 @@ const reducerFamilyMember = (state = info, action) => {
 	}
 };
 
-const reducerBookList = (state = [{name: 'Book Title'}], action) => {
+const reducerBookList = (state = [], action) => {
 	switch (action.type) {
 		case 'LOAD':
 			return state;
