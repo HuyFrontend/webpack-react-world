@@ -1,32 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clear, loadStories } from '../../stores/allActions';
 
-export function Stories(props) {
-    console.log('Stories', props);
-    return (
-        <div>
-            <button type="button" onClick={props.loadStories}>Load Top 3 Stories</button>
-            <button type="button" onClick={props.clear}>Clear</button>
-            <StoryList {...props} />
-        </div>
-    )
-}
+// export function Stories(props) {
+//     console.log('Stories', props);
+//     return (
+//         <div>
+//             <button type="button" onClick={props.loadStories}>Load Top 3 Stories</button>
+//             <button type="button" onClick={props.clear}>Clear</button>
+//             <StoryList {...props} />
+//         </div>
+//     )
+// }
 
-function StoryList(props) {
+const StoryList = (props) => {
     console.log('Story List', props);
+
     if (!props.items || props.items.length === 0) return null;
     return (
         <div>
-            {props.items.map(item => <Story {...item} key={item.id} />)}
+            { props.items.map((item) => {
+                return (
+                    <Story {...item} key={item.id} />
+                )
+            })}
         </div>
     )
-}
+};
 
-function Story(props) {
+const Story = (props) => {
     console.log('Story', props);
     return <p>{props.title}</p>
+};
+
+class Stories extends Component {
+    constructor(props){
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <button type="button" onClick={this.props.loadStories}>Load Top 3 Stories</button>
+                <button type="button" onClick={this.props.clear}>Clear</button>
+                <StoryList {...this.props.stories} />
+            </div>
+        )
+    }
 }
+const mapStateToProps = (state) => {
+    console.log('mapStateToProps', state);
+    return {
+        stories: state.storiesReducer,
+    };
+};
 
 function mapState(state) {
     console.log('State', state);
@@ -41,4 +67,4 @@ function mapDispatch(dispatch) {
     };
 }
 
-export default connect(mapState, mapDispatch)(Stories);
+export default connect(mapStateToProps, mapDispatch)(Stories);

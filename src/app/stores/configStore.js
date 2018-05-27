@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
 import { rootEpic } from '../stores/allActions';
 const loggerMiddleware = createLogger();
+
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
 const configureStore = (preloadedState) => {
