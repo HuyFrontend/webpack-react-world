@@ -10,7 +10,6 @@ export const selectCategoryType = (value) => {
         dispatch({type: 'LOAD'})
         return getListByCategory(value).then((res) => {
             const data = res.data.children.map(child => child.data);
-            console.log('res', res, 'data', data);
             return dispatch({ type: 'LOADED', payLoad: data});
         });
     }

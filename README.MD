@@ -111,7 +111,6 @@ export default function configureStore(preloadedState) {
 - in Main.js
 import configureStore from './configStore';
 const store = configureStore();
-console.log('store', store.getState());
 =======================================
 ## Errors
 1. Error `arrow function with babel` like increment = () => {}

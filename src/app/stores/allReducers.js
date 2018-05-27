@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
-const reducerCounter = (state = {count: 10}, action) => {
-	console.log('step 2 in redux: reducer and return new states');
+const reducerCounter = (state = { count: 10 }, action) => {
 	switch(action.type) {
 	  case 'INCREMENT':
 			return {
@@ -16,19 +15,18 @@ const reducerCounter = (state = {count: 10}, action) => {
 	}
 };
 const info = {
-    name: 'Nhien',
+    name: 'Vo Xuan An Nhien',
     age: 1,
-    phone: ''
+    phone: '0942.404.202'
 };
 
 const reducerFamilyMember = (state = info, action) => {
-	console.log('init reducerName');
 	switch(action.type) {
 	  case 'CHILD':
 			return info;
 	  case 'FATHER':
 			return {
-				name: 'Huy', age: 30, phone: '060 17 264 2108'
+				name: 'Huy', age: 30, phone: '+6017.264.2108'
 			};
 	  default:
 			return state;
@@ -36,7 +34,6 @@ const reducerFamilyMember = (state = info, action) => {
 };
 
 const reducerBookList = (state = [{name: 'Book Title'}], action) => {
-	console.log('reducerBookList', 'state', state);
 	switch (action.type) {
 		case 'LOAD':
 			return state;

@@ -37,7 +37,6 @@ class ReduxBookList extends Component {
         this.props.dispatch(selectCategoryType(catName));
     }
     onRemoveList = () => {
-        console.log('remove');
         this.props.dispatch(removeBooklist());
     }
     render() {
@@ -53,7 +52,6 @@ class ReduxBookList extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log('state listByCategory', state);
     return {
         bookList: state.bookList && state.bookList.length ? state.bookList : []
     };

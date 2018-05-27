@@ -6,7 +6,6 @@ import ReduxBookList from '../ReduxBookList/ReduxBookList';
 
 class ReduxCounter extends Component {
     increment = () => {
-        console.log('step 1 in redux, event handle');
         this.props.dispatch({ type: 'INCREMENT' });
     }
     decrement = () => {
@@ -14,12 +13,9 @@ class ReduxCounter extends Component {
     }
 
     setFamilyType = (familyType) => {
-        console.log('Type', familyType);
         this.props.dispatch(selectFamilyType(familyType));
     }
     render() {
-        console.log('step 3 in redux, render and re-render');
-        console.log('props', this.props);
         return (
             <div>
                 <div className="counter">
@@ -49,7 +45,6 @@ class ReduxCounter extends Component {
 };
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps', state);
     return {
       countProp: state.counter.count,
       info: state.familyInfo
