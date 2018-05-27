@@ -34,44 +34,48 @@ const reducerFamilyMember = (state = info, action) => {
 			return state;
 	}
 };
-// const reducerSelectedFamilyMember = (state = 'FATHER', action) => {
-//     switch (action.type) {
-//         case 'FATHER':
-//             return 'FATHER';
-//         default:
-//             return 'CHILD';
-//     }
-// };
 
 const reducerBookList = (state = [{name: 'Book Title'}], action) => {
 	console.log(' init reducerBookList');
 	switch (action.type) {
 		case 'LOAD':
-			debugger;
-			return getItemByCategory(action.category);
+			// getItemByCategory(action.category);
+			return state; //getItemByCategory(action.category);
         default:
             return state;
     }
 };
 
-function getItemByCategory(categoryName) {
-		return
+const getItemByCategory = (categoryName) => {
+		// return
 		fetch(`https://www.reddit.com/r/${categoryName}.json`)
-        .then(response => response.json())
+        .then(response => {
+			console.log('aaaaaaaaaaaaaa');
+			return response.json();
+		})
         .then((json) => {
-			console.log('json');
+			console.log('json', json);
                 return json;
-        });
+        }).catch((err) => {
+			console.log('errrro', err);
+
+		});
 }
 
-export function selectSub(sub) {
+export const selectFamilyType = (value) => {
 	return {
-        type: sub,
+        type: value,
     };
 }
 
-export function selectCatrgory(value) {
-	return { tpye: 'LOAD', category: value };
+export const selectCatrgory = (value) => {
+	getItemByCategory(value);
+	console.log('selectCatrgory value', value);
+	return { type: 'LOAD', category: value };
+	// const action = { type: 'LOAD', category: value };
+	// return (dispatch) => {
+    //     return dispatch(action);
+    // }
 }
 
 const allReducers = combineReducers({

@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { selectCatrgory, selectSub } from '../../stores/allReducers';
 const ButtonElememt = ({categories, selectCateGory}) => {
     const listItems = categories.map((item, i) =>
         <button key= {i} className={`item ${item}`} onClick={() => selectCateGory(item)}>{item.toUpperCase()}</button>
@@ -14,15 +14,16 @@ class ReduxBookList extends Component {
     constructor(props) {
         super(props);
     }
-    selectCateGory = (catName) => {
-        console.log('category name', catName);
+    selectCateName = (catName) => {
+        this.props.dispatch(selectCatrgory(catName));
+        // selectCatrgory(catName);
     }
     render() {
         const categories = ['javascript', 'react', 'angular', 'nodejs'];
 
         return (
             <div className="book-container">
-                <ButtonElememt categories={categories} selectCateGory={(e) => this.selectCateGory(e)}/>
+                <ButtonElememt categories={categories} selectCateGory={(e) => this.selectCateName(e)}/>
                 <div className="item">
                 </div>
             </div>

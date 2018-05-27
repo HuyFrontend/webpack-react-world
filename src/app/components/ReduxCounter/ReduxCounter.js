@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectSub } from '../../stores/allReducers';
+import { selectFamilyType } from '../../stores/allReducers';
 
 import ReduxBookList from '../ReduxBookList/ReduxBookList';
 
@@ -15,7 +15,7 @@ class ReduxCounter extends Component {
 
     setFamilyType = (familyType) => {
         console.log('Type', familyType);
-        this.props.dispatch(selectSub(familyType));
+        this.props.dispatch(selectFamilyType(familyType));
     }
     render() {
         console.log('step 3 in redux, render and re-render');
