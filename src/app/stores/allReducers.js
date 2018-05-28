@@ -42,16 +42,14 @@ const reducerBookList = (state = {isLoading: false, list: []}, action) => {
 		case CONSTANT_ACTION.BOOKS_LOAD_START:
 			return Object.assign({ state, isLoading: true });
 		case CONSTANT_ACTION.BOOKS_LOAD_DONE:
-			state = { isLoading: false, list: action.payLoad };
+			state = { list: action.payLoad };
 			return state;
 		case CONSTANT_ACTION.BOOKS_LOAD_ERROR:
-			state = { isLoading: false, list: [] }
-			return state;
+			return Object.assign({ state, isLoading: false });
 		case CONSTANT_ACTION.BOOKS_REMOVE:
-			state = { isLoading: false, list:[] }
-			return [];
+			return { list: [] };
 		default:
-			state = { isLoading: false, list:[] }
+			state = Object.assign({ state, isLoading: false });
             return state;
     }
 };
