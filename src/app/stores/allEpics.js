@@ -7,13 +7,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
-import { clear, fetchUser, fetchUserFulfilled } from './allActions';
+import { clearStories, fetchUser, fetchUserFulfilled } from './allActions';
 import CONSTANT_ACTION from './constantActions';
 
 const loadStoriesEpic = (action$) => {
     return action$.ofType(CONSTANT_ACTION.STORIES_LOAD)
         .switchMap(() => {
-            return Observable.of(clear()).delay(2000);
+            return Observable.of(clearStories()).delay(2000);
         });
 };
 const fetchUserEpic = (action$) => {

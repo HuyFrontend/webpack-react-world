@@ -32,12 +32,12 @@ export const loadStories = () => {
     }
 };
 
-export const clear = () => {
+export const clearStories = () => {
     return {
         type: CONSTANT_ACTION.STORIES_CLEAR
     }
 };
-// action creators
+
 export const fetchUser = (username) => {
     return (
         { type: CONSTANT_ACTION.USER_FETCH, payload: username }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clear, loadStories, fetchUser } from '../../stores/allActions';
+import { clearStories, loadStories, fetchUser } from '../../stores/allActions';
 
 const StoryList = (props) => {
     if (!props.items || props.items.length === 0) {
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 function mapDispatch(dispatch) {
     return {
         getStories: () => dispatch(loadStories()),
-        clearStories: () => dispatch(clear()),
+        clearStories: () => dispatch(clearStories()),
         fetchUser: () => {
             return dispatch(fetchUser('huyvoxuan8489'));
         }
