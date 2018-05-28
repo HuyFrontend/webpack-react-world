@@ -1,0 +1,28 @@
+
+const FATHER = Symbol('FATHER');
+const MOM = Symbol('MOM');
+const CHILD = Symbol('CHILD');
+
+const BOOKS_LOAD_START = Symbol('BOOKS_LOAD_START');
+const BOOKS_LOAD_DONE = Symbol('BOOKS_LOAD_DONE');
+const BOOKS_REMOVE = Symbol('BOOKS_REMOVE');
+
+const STORIES_LOAD = Symbol('STORIES_LOAD');
+const STORIES_CLEAR = Symbol('STORIES_CLEAR');
+
+const USER_FETCH = Symbol('USER_FETCH');
+const USER_FULFILLED = Symbol('USER_FULFILLED');
+const CONSTANT_ACTION = {
+    FATHER,
+    MOM,
+    CHILD,
+    BOOKS_LOAD_START,
+    BOOKS_LOAD_DONE,
+    BOOKS_REMOVE,
+    STORIES_LOAD,
+    STORIES_CLEAR,
+    USER_FETCH,
+    USER_FULFILLED
+};
+
+export default CONSTANT_ACTION;
