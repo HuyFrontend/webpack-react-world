@@ -40,16 +40,15 @@ const reducerFamilyMember = (state = info, action) => {
 const reducerBookList = (state = {isLoading: false, list: []}, action) => {
 	switch (action.type) {
 		case CONSTANT_ACTION.BOOKS_LOAD_START:
-			return Object.assign({ state, isLoading: true });
+			return { list: state.list, isLoading: true };
 		case CONSTANT_ACTION.BOOKS_LOAD_DONE:
 			state = { list: action.payLoad };
 			return state;
 		case CONSTANT_ACTION.BOOKS_LOAD_ERROR:
-			return Object.assign({ state, isLoading: false });
+			return { list: state.list };
 		case CONSTANT_ACTION.BOOKS_REMOVE:
 			return { list: [] };
 		default:
-			state = Object.assign({ state, isLoading: false });
             return state;
     }
 };

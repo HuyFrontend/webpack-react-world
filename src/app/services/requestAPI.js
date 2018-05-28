@@ -18,6 +18,7 @@ const customHeaders = (token = '') => {
     }
     return new Headers(headerObj);
 };
+
 const jsonResponse = (res) => {
     if (!res.ok) {
         let { status, statusText } = res;
@@ -26,35 +27,8 @@ const jsonResponse = (res) => {
     }
     return res.json();
 };
-export const getData = (url) => {
-    const headers = customHeaders();
-    return fetch(url, {
-        headers: headers
-    }).then((res) => {
-        return jsonResponse(res);
-    });
-};
-export function postData(url, body, token) {
-    const headers = customHeaders(token);
-    return fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(body)
-    }).then((res) => {
-        return jsonResponse(res);
-    });
-};
-export function putData(url, body, token) {
-    const headers = customHeaders(token);
-    return fetch(url, {
-        method: 'PUT',
-        headers: headers,
-        body: JSON.stringify(body)
-    }).then((res) => {
-        return jsonResponse(res);
-    });
-};
-export const getDataPromise = (url) => {
+
+const getDataPromise = (url) => {
     return fetch(url)
         .then((res) => {
             return jsonResponse(res);
@@ -63,7 +37,28 @@ export const getDataPromise = (url) => {
             return json;
         }).catch((err) => {});
 };
-export const getDataDefault = (url) => {
+
+const postDataObservable = (url, body, token = '') => {
+    const headers = customHeaders(token);
+    const fetchFn = fetch(url, {
+        method: 'POST',
+        // headers: headers,
+        body: JSON.stringify(body)
+    });
+    return convertObservable(fetchFn);
+};
+
+const putDataObservable = (url, body, token = '') => {
+    const headers = customHeaders(token);
+    const fetchFn = fetch(url, {
+        method: 'PUT',
+        // headers: headers,
+        body: JSON.stringify(body)
+    });
+    return convertObservable(fetchFn);
+};
+
+const getDataObservable = (url) => {
     const options = {};
     const fetchFn = fetch(url, options);
     return convertObservable(fetchFn);
@@ -76,3 +71,11 @@ const convertObservable = (fetchFn) => {
             return Observable.from(res.json());
         })
 };
+
+const requestAPI = {
+    getDataPromise: (url) => getDataPromise(url),
+    getDataObservable: (url) => getDataObservable(url),
+    postDataObservable: (url, body, token) => postDataObservable(url, body, token),
+    putDataObservable: (url, body, token) => putDataObservable(url, body, token),
+}
+export default requestAPI;

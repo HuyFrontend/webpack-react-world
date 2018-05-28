@@ -1,6 +1,6 @@
 import { getDataDefault } from './requestAPI';
-
+import requestAPI from './requestAPI';
 export const getBookListService = (categoryName) => {
     const url = `https://www.reddit.com/r/${categoryName}.json`;
-    return getDataDefault(url);
+    return requestAPI.getDataObservable(url);
 }
