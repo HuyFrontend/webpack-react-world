@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import CONSTANT_ACTION from './constantActions';
 
 const reducerCounter = (state = { count: 10 }, action) => {
 	switch(action.type) {
@@ -17,29 +18,32 @@ const reducerCounter = (state = { count: 10 }, action) => {
 const info = {
     name: 'Vo Xuan An Nhien',
     age: 1,
-    phone: '0942.404.202'
+    phone: '+84942.404.202'
 };
-
 const reducerFamilyMember = (state = info, action) => {
-	switch(action.type) {
-	  case 'CHILD':
+	switch (action.type) {
+		case CONSTANT_ACTION.MOM:
+			return {
+				name: 'Tran Thi My Le', age: 25, phone: '+8489.893.2519'
+			};
+		case CONSTANT_ACTION.CHILD:
 			return info;
-	  case 'FATHER':
+		case CONSTANT_ACTION.FATHER:
 			return {
 				name: 'Huy', age: 30, phone: '+6017.264.2108'
 			};
-	  default:
+		default:
 			return state;
 	}
 };
 
 const reducerBookList = (state = [], action) => {
 	switch (action.type) {
-		case 'LOAD':
+		case CONSTANT_ACTION.BOOKS_LOAD_START:
 			return state;
-		case 'LOADED':
+		case CONSTANT_ACTION.BOOKS_LOAD_DONE:
 			return action.payLoad;
-		case 'REMOVE':
+		case CONSTANT_ACTION.BOOKS_REMOVE:
 			return [];
         default:
             return state;
@@ -66,21 +70,28 @@ const stories = [
 		"url": "https://www.graphcore.ai/posts/what-does-machine-learning-look-like"
 	}
 ];
-
 const initialState = {
 	items: [],
 };
-
 const storiesReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'LOAD_STORIES':
+		case CONSTANT_ACTION.STORIES_LOAD:
 			return {
 				items: stories.slice(),
 			};
-		case 'CLEAR_STORIES':
+		case CONSTANT_ACTION.STORIES_CLEAR:
 			return {
 				items: [],
 			};
+		default:
+			return state;
+	}
+};
+
+const userReducer = (state = {}, action) => {
+	switch (action.type) {
+		case CONSTANT_ACTION.USER_FULFILLED:
+			return Object.assign({state, [action.payload.login]: action.payload});
 		default:
 			return state;
 	}
@@ -90,6 +101,7 @@ const allReducers = combineReducers({
 	counter: reducerCounter,
 	familyInfo: reducerFamilyMember,
 	bookList: reducerBookList,
-	storiesReducer: storiesReducer
+	storiesReducer: storiesReducer,
+	userReducer: userReducer
 });
 export default allReducers;

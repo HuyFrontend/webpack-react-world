@@ -8,7 +8,7 @@ I. webpack and webpack-cli
     "build": "webpack --mode production"
 }
 4. in root folder add src/index.js, in index.js console.log('hello world');
-5. Run
+5. Run Application
 $ npm run start
 $ npm run build
 It will create dist folder and main.js

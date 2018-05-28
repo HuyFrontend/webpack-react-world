@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clear, loadStories } from '../../stores/allActions';
+import { clear, loadStories, fetchUser } from '../../stores/allActions';
 
 const StoryList = (props) => {
     if (!props.items || props.items.length === 0) {
@@ -25,6 +25,10 @@ class Stories extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount() {
+        console.log('didmount');
+        this.props.fetchUser();
+    }
     render() {
         return (
             <div className={`col-md-12`}>
@@ -39,13 +43,17 @@ class Stories extends Component {
 const mapStateToProps = (state) => {
     return {
         stories: state.storiesReducer,
+        githubInfo: state.userReducer
     };
 };
 
 function mapDispatch(dispatch) {
     return {
         getStories: () => dispatch(loadStories()),
-        clearStories: () => dispatch(clear())
+        clearStories: () => dispatch(clear()),
+        fetchUser: () => {
+            return dispatch(fetchUser('huyvoxuan8489'));
+        }
     };
 }
 

@@ -12,7 +12,7 @@ class ReduxContainer extends React.Component {
 	}
   render() {
     return (
-      <div className="WebpackApp">
+      <div className={`ReduxContainer`}>
         <Provider store={store}>
 					<ReduxCounter/>
         </Provider>

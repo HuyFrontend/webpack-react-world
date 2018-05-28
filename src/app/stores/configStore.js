@@ -4,7 +4,8 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './allReducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
-import { rootEpic } from '../stores/allActions';
+// import { rootEpic } from '../stores/allActions';
+import { rootEpic } from '../stores/allEpics';
 const loggerMiddleware = createLogger();
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
