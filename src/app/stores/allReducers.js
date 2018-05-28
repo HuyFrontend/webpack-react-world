@@ -37,17 +37,21 @@ const reducerFamilyMember = (state = info, action) => {
 	}
 };
 
-const reducerBookList = (state = [], action) => {
+const reducerBookList = (state = {isLoading: false, list: []}, action) => {
 	switch (action.type) {
 		case CONSTANT_ACTION.BOOKS_LOAD_START:
-			return state;
+			return Object.assign({ state, isLoading: true });
 		case CONSTANT_ACTION.BOOKS_LOAD_DONE:
-			return action.payLoad;
+			state = { isLoading: false, list: action.payLoad };
+			return state;
 		case CONSTANT_ACTION.BOOKS_LOAD_ERROR:
-			return [];
+			state = { isLoading: false, list: [] }
+			return state;
 		case CONSTANT_ACTION.BOOKS_REMOVE:
+			state = { isLoading: false, list:[] }
 			return [];
-        default:
+		default:
+			state = { isLoading: false, list:[] }
             return state;
     }
 };
@@ -104,6 +108,6 @@ const allReducers = combineReducers({
 	familyInfo: reducerFamilyMember,
 	bookList: reducerBookList,
 	storiesReducer: storiesReducer,
-	userReducer: userReducer
+	userReducer: userReducer,
 });
 export default allReducers;

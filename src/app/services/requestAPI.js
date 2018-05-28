@@ -1,9 +1,8 @@
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs';
-import { ajax } from 'rxjs/ajax';
 import { flatMap, map } from 'rxjs/operators';
 import 'rxjs/add/observable/from';
+
 const customHeaders = (token = '') => {
     const defaultHeaders = {
         'Content-Type': 'application/json'
@@ -16,10 +15,6 @@ const customHeaders = (token = '') => {
         headerObj = Object.assign({
             defaultHeaders, tokenHeader
         });
-        // headerObj = {
-        //     ...defaultHeaders,
-        //     tokenHeader
-        // }
     }
     return new Headers(headerObj);
 };
@@ -70,12 +65,13 @@ export const getDataPromise = (url) => {
 };
 export const getDataDefault = (url) => {
     const options = {};
-    return convertObservable(fetch(url, options));
+    const fetchFn = fetch(url, options);
+    return convertObservable(fetchFn);
 };
 
-const convertObservable = (fetchData) => {
+const convertObservable = (fetchFn) => {
     return Observable
-        .from(fetchData)
+        .from(fetchFn)
         .flatMap((res) => {
             return Observable.from(res.json());
         })

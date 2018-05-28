@@ -53,7 +53,7 @@ class ReduxBookList extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        bookList: state.bookList && state.bookList.length ? state.bookList : []
+        bookList: state.bookList && state.bookList.list && state.bookList.list.length ? state.bookList.list : []
     };
 };
 
