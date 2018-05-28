@@ -1,16 +1,15 @@
 import { Observable } from 'rxjs/Observable';
 import { combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
-
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
-import { of } from 'rxjs/observable/of';
-import { delay } from 'rxjs/operators';
-
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
 import { clear, fetchUser, fetchUserFulfilled } from './allActions';
 import CONSTANT_ACTION from './constantActions';
-// epics
+
 const loadStoriesEpic = (action$) => {
     return action$.ofType(CONSTANT_ACTION.STORIES_LOAD)
         .switchMap(() => {
@@ -22,9 +21,9 @@ const fetchUserEpic = (action$) => {
     .mergeMap((action) => {
       return ajax.getJSON(`https://api.github.com/users/${action.payload}`)
         .map((response) => {
+            console.log('Fulfiled', response);
             return fetchUserFulfilled(response);
         })
-
     });
 };
 export const rootEpic = combineEpics(loadStoriesEpic, fetchUserEpic);

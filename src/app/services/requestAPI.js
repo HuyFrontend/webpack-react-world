@@ -70,17 +70,13 @@ export const getDataPromise = (url) => {
 };
 export const getDataDefault = (url) => {
     const options = {};
-    const fetchData = fetch(url, options);
-    return convertObservable(fetchData);
+    return convertObservable(fetch(url, options));
 };
 
-const convertObservable = (url) => {
+const convertObservable = (fetchData) => {
     return Observable
-        .from(fetch(url))
+        .from(fetchData)
         .flatMap((res) => {
             return Observable.from(res.json());
         })
-        // .subscribe((fetchRes) => {
-        //     console.log('fetch sub', fetchRes);
-        // })
 };

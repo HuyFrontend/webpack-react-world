@@ -43,6 +43,8 @@ const reducerBookList = (state = [], action) => {
 			return state;
 		case CONSTANT_ACTION.BOOKS_LOAD_DONE:
 			return action.payLoad;
+		case CONSTANT_ACTION.BOOKS_LOAD_ERROR:
+			return [];
 		case CONSTANT_ACTION.BOOKS_REMOVE:
 			return [];
         default:

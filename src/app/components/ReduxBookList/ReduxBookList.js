@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCategoryType, selectFamilyType, removeBooklist } from '../../stores/allActions';
+import { selectCategoryType, removeBooklist } from '../../stores/allActions';
 const ButtonElememt = ({categories, selectCateGory, removeList}) => {
     const listItems = categories.map((item, i) =>
         <button key= {i} className={`item ${item}`} onClick={() => selectCateGory(item)}>{item.toUpperCase()}</button>

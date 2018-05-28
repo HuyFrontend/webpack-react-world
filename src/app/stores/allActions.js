@@ -1,9 +1,3 @@
-import { Observable } from 'rxjs/Observable';
-import { combineEpics } from 'redux-observable';
-import 'rxjs';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
 import { getBookListService } from '../services/allServices';
 import CONSTANT_ACTION from './constantActions';
 
@@ -16,15 +10,14 @@ export const selectFamilyType = (value) => {
 export const selectCategoryType = (value) => {
     return (dispatch) => {
         dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_START })
-        return getListByCategory(value).then((res) => {
+        return getBookListService(value).subscribe((res) => {
+            console.log('R,', res);
             const data = res.data.children.map(child => child.data);
             return dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_DONE, payLoad: data});
-        });
+        }, (err) => {
+            return dispatch({type: CONSTANT_ACTION.BOOKS_LOAD_ERROR});
+        })
     }
-};
-
-const getListByCategory = (value) => {
-    return getBookListService(value);
 };
 
 export const removeBooklist = () => {
