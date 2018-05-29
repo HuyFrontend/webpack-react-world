@@ -6,7 +6,7 @@ import style from './index.css';
 import './index.scss';
 import windowiImgUrl from './assets/images/Screenshot_1.png';
 import logo from './assets/images/logo.svg';
-import WebpackApp from './WebpackApp';
+import RouterApp from './WebpackApp';
 import ReduxContainer from './ReduxContainer';
 const divStyle = {
   color: 'blue',
@@ -25,9 +25,9 @@ const Index = () => {
   </div>;
 };
 
-ReactDOM.render(<Index/>, document.getElementById('index-app'));
+// ReactDOM.render(<Index/>, document.getElementById('index-app'));
 
-ReactDOM.render(<WebpackApp/>, document.getElementById('webpack-root'));
+ReactDOM.render(<RouterApp/>, document.getElementById('webpack-root'));
 
 ReactDOM.render(<ReduxContainer/>, document.getElementById('webpack-redux'));
 

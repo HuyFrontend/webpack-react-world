@@ -1,6 +1,6 @@
-import { getBookListService } from '../services/allServices';
+// import { getBookListService } from '../services/allServices';
 import CONSTANT_ACTION from './constantActions';
-
+import SERVICES from '../services/allServices';
 export const selectFamilyType = (value) => {
 	return {
         type: value,
@@ -10,11 +10,12 @@ export const selectFamilyType = (value) => {
 export const selectCategoryType = (value) => {
     return (dispatch) => {
         dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_START })
-        return getBookListService(value).subscribe((res) => {
-            console.log('R,', res);
+        return SERVICES.getBookListService(value).subscribe((res) => {
+            console.log('Response,', res);
             const data = res.data.children.map(child => child.data);
             return dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_DONE, payLoad: data});
         }, (err) => {
+            console.log('Error', err);
             return dispatch({type: CONSTANT_ACTION.BOOKS_LOAD_ERROR});
         })
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import logo from './assets/images/logo.svg';
 import './WebpackApp.scss';
 
@@ -14,5 +15,18 @@ class WebpackApp extends Component {
     );
   }
 }
+// export default WebpackApp;
 
-export default WebpackApp;
+class RouterApp extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <Switch>
+          {/* <Route exact path="/login" name="Login Page" component={Login} /> */}
+          <Route path="/home" name="Home" component={WebpackApp} />
+        </Switch>
+      </HashRouter>
+    );
+  }
+}
+export default RouterApp;
