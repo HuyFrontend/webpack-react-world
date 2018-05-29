@@ -53,11 +53,11 @@ class ReduxElements extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    const isLoading = (state.bookList && state.bookList.isLoading) | false;
+    console.log('sata', state);
     return {
-      countProp: state.counter.count,
-      info: state.familyInfo,
-      isLoading: isLoading
+      countProp: state.counter ? state.counter.count : 0,
+      info: state.familyInfo ? state.familyInfo : { name: 'Nhien', age: 1, phone: ''},
+      isLoading: (state.bookList && state.bookList.isLoading) | false
     };
 };
 export default connect(mapStateToProps)(ReduxElements);

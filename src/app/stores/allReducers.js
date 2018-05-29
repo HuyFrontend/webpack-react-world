@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import CONSTANT_ACTION from './constantActions';
 
 const reducerCounter = (state = { count: 10 }, action) => {
@@ -106,5 +107,6 @@ const allReducers = combineReducers({
 	bookList: reducerBookList,
 	storiesReducer: storiesReducer,
 	userReducer: userReducer,
+	router: routerReducer
 });
 export default allReducers;
