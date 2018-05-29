@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { Route, Switch, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter, syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './app/stores/configStore';
 import ReduxElements from './app/components/ReduxElements/ReduxElements';
-import { history } from './app/stores/configStore';
+import { history } from './app/constants/constants';
 const store = configureStore();
 
 class ReduxContainer extends React.Component {
@@ -14,25 +14,21 @@ class ReduxContainer extends React.Component {
   render() {
     return (
       <div className={`ReduxContainer`}>
+        {/* <Provider store={store}>
+          <ReduxElements/>
+        </Provider> */}
         <Provider store={store}>
-					<ReduxElements/>
+          <ConnectedRouter history={history}>
+            <Switch history={history}>
+              <Route exact path='/' component={() => <h1> LOGIN</h1>} />
+              <Route path='/roster' component={() => <h1> LOGIN</h1>}/>
+              <Route path='/schedule' component={() => <h1> LOGIN</h1>}/>
+            </Switch>
+          </ConnectedRouter>
         </Provider>
       </div>
     );
   }
 }
-const Test = () => {
-  return (
-    <h2>Harry Vo</h2>
-  );
-}
+
 export default ReduxContainer;
-
-
-{/* <Provider store={store}>
-  <ConnectedRouter history={history}>
-    <div>
-      <Route path="/about" component={Test}/>
-    </div>
-  </ConnectedRouter>
-</Provider> */}
