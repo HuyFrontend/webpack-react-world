@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, browserHistory } from 'react-router';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter, syncHistoryWithStore } from 'react-router-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import configureStore from './app/stores/configStore';
 import ReduxElements from './app/components/ReduxElements/ReduxElements';
 import { history } from './app/constants/constants';
@@ -17,14 +17,24 @@ class ReduxContainer extends React.Component {
         {/* <Provider store={store}>
           <ReduxElements/>
         </Provider> */}
-        <Provider store={store}>
+        {/* <Provider store={store}>
           <ConnectedRouter history={history}>
             <Switch history={history}>
-              <Route exact path='/' component={() => <h1> LOGIN</h1>} />
-              <Route path='/roster' component={() => <h1> LOGIN</h1>}/>
-              <Route path='/schedule' component={() => <h1> LOGIN</h1>}/>
+              <Route exact path='/' component={() => <h4> 11</h4>} />
+              <Route path='/posts' component={() => <h1> Post</h1>}/>
+              <Route path='books' component={() => <h1> Books</h1>}/>
             </Switch>
           </ConnectedRouter>
+        </Provider> */}
+        <Provider store={store}>
+          <HashRouter>
+            <Switch history={history}>
+              <Route path="/home" name="Redux" component={() => <h4> home</h4>} />
+              <Route path="/about" name="Header" component={() => <h4> about</h4>} />
+              <Route path="/contact" name="Inline" component={() => <h4> contact</h4>}/>
+              <Route path="/" name="Default" component={() => <h4> Default</h4>}/>
+            </Switch>
+          </HashRouter>
         </Provider>
       </div>
     );

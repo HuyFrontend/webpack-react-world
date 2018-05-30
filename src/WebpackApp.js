@@ -17,22 +17,22 @@ class WebpackApp extends Component {
     );
   }
 }
-export default WebpackApp;
+// export default WebpackApp;
 
-// class RouterApp extends Component {
-//   render() {
-//     return (
-//       <HashRouter>
-//         <Switch>
-//           <Route path="/redux" name="Redux" component={ReduxContainer} />
-//           <Route path="/header" name="Header" component={WebpackApp} />
-//           <Route path="/inline" name="Inline" component={InlineCSS}/>
-//           <Route path="/" name="Default" component={ReduxContainer} />
-//         </Switch>
-//       </HashRouter>
-//     );
-//   }
-// }
+class RouterApp extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <Switch>
+          <Route path="/home" name="Redux" component={ReduxContainer} />
+          <Route path="/about" name="Header" component={WebpackApp} />
+          <Route path="/contact" name="Inline" component={InlineCSS}/>
+          <Route path="/" name="Default" component={ReduxContainer} />
+        </Switch>
+      </HashRouter>
+    );
+  }
+}
 
 const InlineCSS = () => {
   const divStyle = { color: 'blue', backgroundImage: 'url(' + windowiImgUrl + ')', height: 20 + 'px'
@@ -43,4 +43,4 @@ const InlineCSS = () => {
     <div style={divStyle}>Inline Style</div>
   </div>;
 };
-// export default RouterApp;
+export default RouterApp;

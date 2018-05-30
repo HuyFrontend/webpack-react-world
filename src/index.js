@@ -8,6 +8,6 @@ import RouterApp from './WebpackApp';
 import ReduxContainer from './ReduxContainer';
 
 ReactDOM.render(<ReduxContainer/>, document.getElementById('webpack-redux'));
-ReactDOM.render(<RouterApp/>, document.getElementById('webpack-root'));
+// ReactDOM.render(<RouterApp/>, document.getElementById('webpack-root'));
 
 registerServiceWorker();
