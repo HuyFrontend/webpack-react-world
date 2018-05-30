@@ -17,19 +17,10 @@ class ReduxContainer extends React.Component {
         {/* <Provider store={store}>
           <ReduxElements/>
         </Provider> */}
-        {/* <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <Switch history={history}>
-              <Route exact path='/' component={() => <h4> 11</h4>} />
-              <Route path='/posts' component={() => <h1> Post</h1>}/>
-              <Route path='books' component={() => <h1> Books</h1>}/>
-            </Switch>
-          </ConnectedRouter>
-        </Provider> */}
         <Provider store={store}>
           <HashRouter>
             <Switch history={history}>
-              <Route path="/home" name="Redux" component={() => <h4> home</h4>} />
+              <Route path="/home" name="Home" component={ReduxElements}/>
               <Route path="/about" name="Header" component={() => <h4> about</h4>} />
               <Route path="/contact" name="Inline" component={() => <h4> contact</h4>}/>
               <Route path="/" name="Default" component={() => <h4> Default</h4>}/>
