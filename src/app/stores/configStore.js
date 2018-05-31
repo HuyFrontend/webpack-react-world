@@ -11,16 +11,29 @@ import { history } from '../constants/constants';
 const loggerMiddleware = createLogger();
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const historyMiddleware = routerMiddleware(history);
+const isProduction = (process.env.NODE_ENV !== 'production') ? false : true;
 const configureStore = (preloadedState) => {
-    return createStore(
-		rootReducer, preloadedState, composeWithDevTools(
-			applyMiddleware(
-				thunkMiddleware,
-				loggerMiddleware,
-				epicMiddleware,
-				historyMiddleware
+	// mode development
+	if (!isProduction) {
+		return createStore(
+			rootReducer, preloadedState, composeWithDevTools(
+				applyMiddleware(thunkMiddleware,
+					loggerMiddleware,
+					epicMiddleware,
+					historyMiddleware
+				)
 			)
 		)
-	)
+	} else {
+		// mode production
+		return createStore(
+			rootReducer, preloadedState, composeWithDevTools(
+				applyMiddleware(thunkMiddleware,
+					epicMiddleware,
+					historyMiddleware
+				)
+			)
+		)
+	}
 };
 export default configureStore;

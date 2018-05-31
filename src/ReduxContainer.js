@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter as Router, HashRouter } from 'react-router-dom';
+// import { Route, Switch, BrowserRouter as Router, HashRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from './app/stores/configStore';
 import ReduxElements from './app/components/ReduxElements/ReduxElements';
