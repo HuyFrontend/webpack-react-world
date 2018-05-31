@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './ReduxElements.scss';
 import spinnerImg from '../../../assets/images/logo.svg';
 import { selectFamilyType } from '../../stores/allActions';
@@ -60,4 +61,6 @@ const mapStateToProps = (state, ownProps) => {
       isLoading: (state.bookList && state.bookList.isLoading) | false
     };
 };
+
+// export default withRouter(connect(mapStateToProps)(ReduxElements));
 export default connect(mapStateToProps)(ReduxElements);

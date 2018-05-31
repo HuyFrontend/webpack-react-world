@@ -156,3 +156,23 @@ module.exports = {
 $ npm i --save-dev bootstrap jquery popper.js
 ## Redux Observable
 $ npm install --save-dev redux-observable rxjs rxjs-compat
+
+
+        <Provider store={store}>
+        {/* Default Router OK */}
+          {/* <HashRouter>
+            <Switch history={history}>
+              <Route path="/home" name="Home" component={ReduxElements}/>
+              <Route path="/about" name="Header" component={() => <h4> about</h4>} />
+              <Route path="/contact" name="Inline" component={() => <h4> contact</h4>}/>
+              <Route path="/" name="Default" component={() => <h4> Default</h4>}/>
+            </Switch>
+          </HashRouter> */}
+
+          {/* Redux Router Failed */}
+          <ConnectedRouter history={history}>
+            <Switch>
+              <Route exact path="/about" name="About" component={() => <h3>About</h3>}/>
+              <Route exact path="/about" name="About" component={About}/>
+            </Switch>
+          </ConnectedRouter>

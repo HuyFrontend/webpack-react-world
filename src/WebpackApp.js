@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import logo from './assets/images/logo.svg';
+import { ConnectedRouter } from 'react-router-redux';
 import './WebpackApp.scss';
+import logo from './assets/images/logo.svg';
 import windowiImgUrl from './assets/images/Screenshot_1.png';
 
 import ReduxContainer from './ReduxContainer';
+import { history } from './app/constants/constants';
+
 class WebpackApp extends Component {
   render() {
     return (
@@ -27,13 +30,27 @@ class RouterApp extends Component {
           <Route path="/home" name="Redux" component={ReduxContainer} />
           <Route path="/about" name="Header" component={WebpackApp} />
           <Route path="/contact" name="Inline" component={InlineCSS}/>
-          <Route path="/" name="Default" component={ReduxContainer} />
+          <Route path="/" name="Default" component={WebpackApp} />
         </Switch>
       </HashRouter>
     );
   }
 }
+class RouterReduxApp extends Component {
 
+  render() {
+    return (
+      <ConnectedRouter history={history}>
+        <Switch>
+          {/* <Route path="/home" name="Redux" component={ReduxContainer} /> */}
+          <Route path="/about" name="Header" component={InlineCSS} />
+          <Route path="/contact" name="Inline" component={InlineCSS}/>
+          <Route path="/" name="Default" component={() => <h3>Default</h3>} />
+        </Switch>
+      </ConnectedRouter>
+    );
+  }
+}
 const InlineCSS = () => {
   const divStyle = { color: 'blue', backgroundImage: 'url(' + windowiImgUrl + ')', height: 20 + 'px'
   };
@@ -43,4 +60,4 @@ const InlineCSS = () => {
     <div style={divStyle}>Inline Style</div>
   </div>;
 };
-export default RouterApp;
+export default RouterReduxApp;
