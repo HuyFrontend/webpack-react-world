@@ -1,9 +1,10 @@
 import createHistory from 'history/createBrowserHistory';
 export const history = createHistory();
+export const isProduction = (process.env.NODE_ENV !== 'production') ? false : true;
 // const CONSTANT = {
 //     history: history
 // }
-// export default CONSTANT;
-export default {
-    history
-}
+const CONSTANT = {
+
+};
+export default CONSTANT;

@@ -6,12 +6,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './allReducers';
 import { rootEpic } from '../stores/allEpics';
-import { history } from '../constants/constants';
+import CONSTANT from '../constants/constants';
+import { history, isProduction } from '../constants/constants';
 
 const loggerMiddleware = createLogger();
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const historyMiddleware = routerMiddleware(history);
-const isProduction = (process.env.NODE_ENV !== 'production') ? false : true;
+// const isProduction = (process.env.NODE_ENV !== 'production') ? false : true;
 const configureStore = (preloadedState) => {
 	// mode development
 	if (!isProduction) {

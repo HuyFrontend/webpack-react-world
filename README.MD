@@ -78,7 +78,7 @@ https://www.npmjs.com/package/file-loader
 }
 
 ======================================
-New Webpack
+## New Webpack
 1. Create `webpack-common.js`, `webpack.dev.js` and `webpack.prod.js`, remove `webpack.config.js`
 - $ npm install --save-dev webpack-merge
 - $ npm i --save-dev clean-webpack-plugin
@@ -87,6 +87,7 @@ New Webpack
 +     "start": "webpack-dev-server --open --config webpack.dev.js",
 +     "build": "webpack --config webpack.prod.js"
 
+# Min js file
 - UglifyjsWebpackPlugin
 $ npm i -D uglifyjs-webpack-plugin
 ======================================
@@ -156,23 +157,5 @@ module.exports = {
 $ npm i --save-dev bootstrap jquery popper.js
 ## Redux Observable
 $ npm install --save-dev redux-observable rxjs rxjs-compat
-
-
-        <Provider store={store}>
-        {/* Default Router OK */}
-          {/* <HashRouter>
-            <Switch history={history}>
-              <Route path="/home" name="Home" component={ReduxElements}/>
-              <Route path="/about" name="Header" component={() => <h4> about</h4>} />
-              <Route path="/contact" name="Inline" component={() => <h4> contact</h4>}/>
-              <Route path="/" name="Default" component={() => <h4> Default</h4>}/>
-            </Switch>
-          </HashRouter> */}
-
-          {/* Redux Router Failed */}
-          <ConnectedRouter history={history}>
-            <Switch>
-              <Route exact path="/about" name="About" component={() => <h3>About</h3>}/>
-              <Route exact path="/about" name="About" component={About}/>
-            </Switch>
-          </ConnectedRouter>
+## ESLint
+https://www.robinwieruch.de/react-eslint-webpack-babel/
