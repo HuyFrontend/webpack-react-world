@@ -1,0 +1,22 @@
+.Header {
+    text-align: center;
+    .navbar {
+        .logo {
+            animation: logo-spin infinite 20s linear;
+            height: 50px;
+        }
+        @keyframes logo-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .row {
+            width: 100%;
+        }
+        .navbar-brand {
+            padding-top: 0.5125rem;
+            .active {
+                color: #FFFFFF;
+            }
+        }
+    }
+}

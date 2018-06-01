@@ -54,7 +54,7 @@ class ReduxElements extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('sata', state);
+    console.log('ReduxElements, state', state);
     return {
       countProp: state.counter ? state.counter.count : 0,
       info: state.familyInfo ? state.familyInfo : { name: 'Nhien', age: 1, phone: ''},

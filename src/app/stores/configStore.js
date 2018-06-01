@@ -12,7 +12,6 @@ import { history, isProduction } from '../constants/constants';
 const loggerMiddleware = createLogger();
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const historyMiddleware = routerMiddleware(history);
-// const isProduction = (process.env.NODE_ENV !== 'production') ? false : true;
 const configureStore = (preloadedState) => {
 	// mode development
 	if (!isProduction) {
