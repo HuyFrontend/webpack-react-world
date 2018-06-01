@@ -13,15 +13,15 @@ class AppContainer extends Component {
   render() {
     return (
       <div className="AppContainer">
-        <Header/>
+        <Header location={location}/>
         {/* <ReduxElements/> */}
         <div className="page-content">
           <div className="container">
-            <Switch history={history}>
+            <Switch history={history} location={location}>
               <Route exact path="/" name="ReduxElements" component={ReduxElements}/>
               <Route path="/home" name="Home" component={ReduxElements}/>
-              <Route path="/about" name="about" component={() => <h4> About</h4>} />
-              <Route path="/contact" name="contact" component={() => <h4> Contact</h4>}/>
+              <Route path="/about" name="about" component={(props) => <h4> About</h4>} />
+              <Route path="/contact" name="contact" component={(props) => <h4> Contact</h4>}/>
             </Switch>
           </div>
         </div>
