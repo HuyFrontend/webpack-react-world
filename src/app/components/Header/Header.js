@@ -11,6 +11,7 @@ class Header extends Component {
     handleClickEvent = (path) => {
         console.log('path', path);
         this.props.dispatch(push(`/${path}`));
+        // this.props.history.push(`/${path}`);
     }
     render() {
         return (
@@ -25,10 +26,14 @@ class Header extends Component {
                             </div>
                             <div className="col-sm-9 col-md-9 col-lg-9 col-xl-9 float-right">
                                 <li className="navbar-brand">
-                                    <NavLink exact activeClassName="active" to='/'>Home</NavLink>
+                                    {/* <NavLink exact activeClassName="active" to='/'>Home</NavLink> */}
+                                    <a onClick={() => this.handleClickEvent('')}>Home</a>
                                 </li>
                                 <li className="navbar-brand">
                                     <NavLink exact activeClassName="active" to='/about'>About</NavLink>
+                                </li>
+                                <li className="navbar-brand">
+                                    <a href={`/link`}>Link</a>
                                 </li>
                                 <li className="navbar-brand">
                                     <NavLink exact activeClassName="active" to='/contact'>Contact</NavLink>
@@ -48,4 +53,5 @@ const mapStateToProps = (state, ownProps) => {
     console.log('Header state', state);
     return state;
 };
-export default withRouter(connect(mapStateToProps)(Header));
+// export default withRouter(connect(mapStateToProps)(Header));
+export default connect(mapStateToProps)(Header);

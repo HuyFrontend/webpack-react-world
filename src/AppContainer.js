@@ -22,6 +22,7 @@ class AppContainer extends Component {
               <Route path="/home" name="Home" component={ReduxElements}/>
               <Route path="/about" name="about" component={(props) => <h4> About</h4>} />
               <Route path="/contact" name="contact" component={(props) => <h4> Contact</h4>}/>
+              <Route path="/link" name="link" component={() => <h4> Link</h4>} />
             </Switch>
           </div>
         </div>
