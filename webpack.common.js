@@ -6,6 +6,10 @@ module.exports = {
     entry: {
         app: './src/index.js'
     },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
@@ -14,10 +18,6 @@ module.exports = {
             filename: './index.html'
         })
     ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
     devServer: {
         historyApiFallback: true, // to change url from 3000/#/home -> 3000/home
     },
