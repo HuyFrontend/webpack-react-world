@@ -9,7 +9,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Production',
+            title: 'Webpack app',
             template: './src/index.html',
             filename: './index.html'
         })
@@ -33,13 +33,16 @@ module.exports = {
                         plugins: ['transform-class-properties']
                     }
                 }
-            }, {
+            },
+            {
                 test: /\.css$/,
                 loaders: ['style-loader','css-loader'],
-            }, {
+            },
+            {
                 test: /\.scss$/,
                 loaders: ['style-loader','css-loader','sass-loader']
-            }, {
+            },
+            {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: [
                 {
