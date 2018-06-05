@@ -6,6 +6,7 @@ import Footer from './app/components/Footer/Footer';
 import ReduxElements from './app/components/ReduxElements/ReduxElements';
 import { history } from './app/constants/constants';
 import { connect } from 'react-redux';
+import ContactForm from './app/components/Forms/ContactForm';
 class AppContainer extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,7 @@ class AppContainer extends Component {
               <Route exact path="/" name="ReduxElements" component={ReduxElements}/>
               <Route path="/home" name="Home" component={ReduxElements}/>
               <Route path="/about" name="about" component={(props) => <h4> About</h4>} />
-              <Route path="/contact" name="contact" component={(props) => <h4> Contact</h4>}/>
+              <Route path="/contact" name="contact" component={ContactForm}/>
               <Route path="/link" name="link" component={() => <h4> Link</h4>} />
             </Switch>
           </div>

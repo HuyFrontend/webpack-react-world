@@ -4,6 +4,5 @@ import 'bootstrap';
 import './index.scss';
 import AppContainer from './AppContainer';
 import ReduxContainer from './ReduxContainer';
-
 ReactDOM.render(<ReduxContainer/>, document.getElementById('root'));
 

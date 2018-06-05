@@ -14,9 +14,10 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'Webpack app',
-            template: './src/index.html',
-            filename: './index.html'
-        })
+            template: './public/index.html',
+            filename: './index.html',
+            favicon: './public/favicon.ico'
+        }),
     ],
     devServer: {
         historyApiFallback: true, // to change url from 3000/#/home -> 3000/home
