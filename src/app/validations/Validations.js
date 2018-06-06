@@ -7,15 +7,22 @@ const emailValidator = (value) => {
     if (!value || value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)+(\.\w{2,8})+$/i)) {
         return null;
     } else {
-        return { invalidEmail: true };
+        return { invalid: true, type: 'email' };
     }
 }
 const requiredValidator = (value) => {
     if (value) {
         return null;
     } else {
-        return { required: true };
+        return { invalid: true, type: 'required' };
     }
+}
+const messageInvalid = (invalidType) => {
+    const message = {
+        required: `This field is required`,
+        email: `Email is wrong format`
+    };
+    return message[invalidType];
 }
 const valid = (type, value) => {
     switch(type) {

@@ -88,8 +88,30 @@ https://www.npmjs.com/package/file-loader
 +     "build": "webpack --config webpack.prod.js"
 
 # Min js file
-- UglifyjsWebpackPlugin
-$ npm i -D uglifyjs-webpack-plugin
+1. `UglifyjsWebpackPlugin`
+    $ npm i -D uglifyjs-webpack-plugin
+    const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+    plugins: [
+        new UglifyJsPlugin({
+            sourceMap: true,
+            test: /\.js($|\?)/i,
+            uglifyOptions: {
+                compress  : true,
+            }
+        }),
+2. `Build time gzip (preferred)`
+    Instead of generating bundle.js, generate bundle.js.gz using Webpack’s compression plugin. Then add a middleware to return gzipped JS file.
+    1. $ npm install compression-webpack-plugin --save-dev
+    2. Import the plugin to webpack.config.prod.js
+        const CompressionPlugin = require('compression-webpack-plugin');
+        In plugins:[], add
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8
+        })
 ======================================
 ## REDUX
 1. install packages

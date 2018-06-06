@@ -1,0 +1,9 @@
+.Error-Message {
+    display: none;
+    &.error {
+        display: block;
+        .help-block {
+            color: #dc3545;
+        }
+    }
+}
