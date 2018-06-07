@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './allReducers';
 import { rootEpic } from '../stores/allEpics';
-import CONSTANT from '../constants/constants';
 import { history, isProduction } from '../constants/constants';
 
 const loggerMiddleware = createLogger();

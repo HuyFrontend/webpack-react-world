@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Switch, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import configureStore from './app/stores/configStore';
-import ReduxElements from './app/components/ReduxElements/ReduxElements';
+// import ReduxElements from './app/components/ReduxElements/ReduxElements';
 import { history } from './app/constants/constants';
 import AppContainer from './AppContainer';
 const store = configureStore();
-class ReduxContainer extends React.Component {
+class ReduxContainer extends Component {
 	constructor(props) {
 		super(props);
 	}

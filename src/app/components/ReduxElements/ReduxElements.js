@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './ReduxElements.scss';
 import spinnerImg from '../../../assets/images/logo.svg';
 import { selectFamilyType } from '../../stores/allActions';
@@ -51,16 +52,23 @@ class ReduxElements extends Component {
             </div>
         )
     }
+}
+
+ReduxElements.propTypes = {
+    dispatch: PropTypes.func,
+    info: PropTypes.object,
+    countProp: PropTypes.number,
+    isLoading: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
     console.log('ReduxElements, state', state);
-    return {
-      countProp: state.counter ? state.counter.count : 0,
-      info: state.familyInfo ? state.familyInfo : { name: 'Nhien', age: 1, phone: ''},
-      isLoading: (state.bookList && state.bookList.isLoading) | false
-    };
+    return Object.assign({}, {
+        countProp: state.counter ? state.counter.count : 0,
+        info: state.familyInfo ? state.familyInfo : { name: 'Nhien', age: 1, phone: ''},
+        isLoading: (state.bookList && state.bookList.isLoading)? true : false
+        }, ownProps
+    );
 };
 
-// export default withRouter(connect(mapStateToProps)(ReduxElements));
-export default connect(mapStateToProps)(ReduxElements);
+export default withRouter(connect(mapStateToProps)(ReduxElements));

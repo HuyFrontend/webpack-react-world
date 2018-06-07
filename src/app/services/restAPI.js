@@ -1,6 +1,6 @@
 
 import { Observable } from 'rxjs/Observable';
-import { flatMap, map } from 'rxjs/operators';
+// import { flatMap } from 'rxjs/operators';
 import 'rxjs/add/observable/from';
 
 const customHeaders = (token = '') => {
@@ -35,11 +35,15 @@ const getDataPromise = (url) => {
         })
         .then((json) => {
             return json;
-        }).catch((err) => {});
+        }).catch((err) => {
+            console.log('Error', err);
+        });
 };
 
 const postDataObservable = (url, body, token = '') => {
-    const headers = customHeaders(token);
+    // const headers = customHeaders(token);
+    customHeaders(token);
+
     const fetchFn = fetch(url, {
         method: 'POST',
         // headers: headers,
@@ -48,8 +52,8 @@ const postDataObservable = (url, body, token = '') => {
     return convertObservable(fetchFn);
 };
 
-const putDataObservable = (url, body, token = '') => {
-    const headers = customHeaders(token);
+const putDataObservable = (url, body) => {
+    // const headers = customHeaders(token);
     const fetchFn = fetch(url, {
         method: 'PUT',
         // headers: headers,

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Validations from '../../validations/Validations';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+// import PropTypes from 'prop-types';
 class ContactForm extends Component {
     constructor(props) {
         super(props);
@@ -16,17 +17,11 @@ class ContactForm extends Component {
         };
     }
     onSubmitForm = () => {
-        console.log('submit form');
     }
     handleChange = (type, event) => {
-        console.log('event.target.value', event.target.value);
         const value = event.target.value;
         const isValid = Validations.valid(type, value);
-        console.log('isvalid', isValid);
-    }
-    onBlurEmail = (event) => {
-        const value = event.target.value;
-
+        console.log('isValid', isValid);
     }
     render() {
         // const validateEmail = { invalid: true, message: 'This field is required.'}
@@ -51,8 +46,10 @@ class ContactForm extends Component {
         );
     }
 }
+ContactForm.propTypes = {
+
+}
 const mapStateToProps = (state) => {
-    console.log('State form', state);
     return { state };
 }
 export default withRouter(connect(mapStateToProps)(ContactForm));

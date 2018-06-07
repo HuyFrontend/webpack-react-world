@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
-import { clearStories, fetchUser, fetchUserFulfilled } from './allActions';
+import { clearStories, fetchUserFulfilled } from './allActions';
 import CONSTANT_ACTION from './constantActions';
 
 const loadStoriesEpic = (action$) => {

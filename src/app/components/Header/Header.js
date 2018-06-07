@@ -4,6 +4,7 @@ import logo from '../../../assets/images/logo.svg';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import PropTypes from 'prop-types';
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -49,9 +50,10 @@ class Header extends Component {
         );
     }
 }
+Header.propTypes = {
+    dispatch: PropTypes.func
+}
 const mapStateToProps = (state, ownProps) => {
-    console.log('Header state', state);
-    return state;
+    return Object.assign({}, state, ownProps);
 };
-// export default withRouter(connect(mapStateToProps)(Header));
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

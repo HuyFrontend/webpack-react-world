@@ -181,3 +181,23 @@ $ npm i --save-dev bootstrap jquery popper.js
 $ npm install --save-dev redux-observable rxjs rxjs-compat
 ## ESLint
 https://www.robinwieruch.de/react-eslint-webpack-babel/
+1. root add .eslintrc
+{
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "rules": {
+        "no-console": "off",
+        "no-useless-escape": "off",
+        "no-undef": "off"
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { clearStories, loadStories, fetchUser } from '../../stores/allActions';
 
 const StoryList = (props) => {
@@ -40,6 +41,22 @@ class Stories extends Component {
         )
     }
 }
+
+Stories.propTypes = {
+    stories: PropTypes.object,
+    githubInfo: PropTypes.object,
+    getStories: PropTypes.func,
+    clearStories: PropTypes.func,
+    fetchUser: PropTypes.func
+};
+
+Story.propTypes = {
+    title: PropTypes.string,
+};
+
+StoryList.propTypes = {
+    items: PropTypes.array,
+};
 const mapStateToProps = (state) => {
     return {
         stories: state.storiesReducer,

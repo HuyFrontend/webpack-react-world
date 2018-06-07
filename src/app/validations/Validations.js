@@ -2,41 +2,48 @@ const validateType = {
     email: 'email',
     required: 'required',
     number: 'number'
-}
+};
+
 const emailValidator = (value) => {
-    if (!value || value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)+(\.\w{2,8})+$/i)) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!value || value.match(re)) {
         return null;
     } else {
         return { invalid: true, type: 'email' };
     }
-}
+};
+
 const requiredValidator = (value) => {
     if (value) {
         return null;
     } else {
         return { invalid: true, type: 'required' };
     }
-}
-const messageInvalid = (invalidType) => {
-    const message = {
-        required: `This field is required`,
-        email: `Email is wrong format`
-    };
-    return message[invalidType];
-}
+};
+
+// const messageInvalid = (invalidType) => {
+//     const message = {
+//         required: `This field is required`,
+//         email: `Email is wrong format`
+//     };
+//     return message[invalidType];
+// };
+
 const valid = (type, value) => {
+    let validate = null;
     switch(type) {
         case validateType.email:
-            return emailValidator(value);
+            validate = emailValidator(value);
             break;
         case validateType.required:
-            return requiredValidator(value);
+            validate = requiredValidator(value);
             break;
         default:
-            return null;
+            return validate;
     }
-}
+    return validate;
+};
 const Validations = {
     valid
-}
+};
 export default Validations;

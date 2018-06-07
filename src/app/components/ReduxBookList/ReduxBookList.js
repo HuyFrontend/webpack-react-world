@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { selectCategoryType, removeBooklist } from '../../stores/allActions';
 const ButtonElememt = ({categories, selectCateGory, removeList}) => {
     const listItems = categories.map((item, i) =>
@@ -51,6 +52,22 @@ class ReduxBookList extends Component {
         );
     }
 }
+ReduxBookList.propTypes = {
+    bookList: PropTypes.array,
+    dispatch: PropTypes.func,
+
+};
+ButtonElememt.propTypes = {
+    categories: PropTypes.array,
+    list: PropTypes.array,
+    removeList: PropTypes.func,
+    selectCateGory: PropTypes.func
+
+};
+ListElememt.propTypes = {
+    list: PropTypes.array,
+};
+
 const mapStateToProps = (state) => {
     return {
         bookList: state.bookList && state.bookList.list && state.bookList.list.length ? state.bookList.list : []

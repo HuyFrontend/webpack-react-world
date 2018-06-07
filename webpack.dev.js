@@ -19,4 +19,18 @@ module.exports = merge(common, {
     plugins: [
 
     ],
+    module: {
+        rules: [
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader",
+                options: {
+                    emitError: true
+                }
+            },
+        ]
+
+    }
 });

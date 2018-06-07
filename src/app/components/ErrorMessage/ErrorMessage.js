@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ErrorMessage.scss';
 
 class ErrorMessage extends Component {
@@ -6,7 +7,7 @@ class ErrorMessage extends Component {
         super(props);
     }
     render() {
-        const validate = this.props.validate;
+        const validate = this.props && this.props.validate;
         if ( validate.invalid ) {
             return (
                 <div className={`Error-Message ${validate.invalid ? 'error' : ''}`}>
@@ -18,5 +19,7 @@ class ErrorMessage extends Component {
         }
     }
 }
-
+ErrorMessage.propTypes = {
+    validate: PropTypes.object
+};
 export default ErrorMessage;

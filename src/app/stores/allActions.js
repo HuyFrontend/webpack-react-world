@@ -11,11 +11,11 @@ export const selectCategoryType = (value) => {
     return (dispatch) => {
         dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_START })
         return SERVICES.getBookListService(value).subscribe((res) => {
-            console.log('Response,', res);
+            console.warn('Response,', res);
             const data = res.data.children.map(child => child.data);
             return dispatch({ type: CONSTANT_ACTION.BOOKS_LOAD_DONE, payLoad: data});
         }, (err) => {
-            console.log('Error', err);
+            console.warn('Error', err);
             return dispatch({type: CONSTANT_ACTION.BOOKS_LOAD_ERROR});
         })
     }
