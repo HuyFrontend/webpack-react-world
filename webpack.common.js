@@ -24,6 +24,7 @@ module.exports = {
     },
     module: {
         rules: [
+            /** load js */
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -35,27 +36,49 @@ module.exports = {
                     }
                 }
             },
+            /** load css */
             {
                 test: /\.css$/,
                 loaders: ['style-loader','css-loader'],
             },
+            /** load sass */
             {
                 test: /\.scss$/,
                 loaders: ['style-loader','css-loader','sass-loader']
             },
+            /** load images */
             {
                 test: /\.(png|jpg|gif|svg|ico)$/,
                 use: [
                 {
                     loader: 'file-loader',
                     options: {
-                        // name: '[path][name].[ext]',
-                        // name: 'dirname/[hash].[ext]',
                         name: '[name].[ext]',
                         outputPath: 'images/'
                     }
                 }]
-            }
+            },
+            /** load fonts */
+            {
+                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
+                }]
+            },
+            /** eslint */
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    emitError: true
+                }
+            },
         ]
     }
 };
