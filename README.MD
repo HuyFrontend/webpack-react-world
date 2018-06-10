@@ -1,3 +1,5 @@
+Nodejs Version: 8.11.2 <Mac OS>
+Npm Version: 5.6.0 <Mac OS>
 ====================================
 I. webpack and webpack-cli
 1. $ npm init
@@ -78,7 +80,7 @@ https://www.npmjs.com/package/file-loader
 }
 
 ======================================
-## New Webpack
+# New Webpack
 1. Create `webpack-common.js`, `webpack.dev.js` and `webpack.prod.js`, remove `webpack.config.js`
 - $ npm install --save-dev webpack-merge
 - $ npm i --save-dev clean-webpack-plugin
