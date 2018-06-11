@@ -28,7 +28,13 @@ $ npm i babel-core babel-loader babel-preset-env babel-preset-react babel-preset
 $ npm i html-webpack-plugin -D
 5. need to make a separate file called .babelrc to provide the options for babel-loader
 $ touch .babelrc inside
-
+{
+  "presets": [
+    "env",
+    "react",
+    "es2015"
+  ]
+}
 Or, alternatively you can add a `babel` object in package.json
 "babel": {
   "presets": [

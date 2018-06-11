@@ -27,18 +27,3 @@ class ReduxContainer extends Component {
 }
 
 export default ReduxContainer;
-
-{/* <Router>
-  <Switch history={history}>
-    <Route exact path="/" name="ReduxElements" component={ReduxElements}/>
-    <Route path="/contact" name="Contact" component={() => (
-      <div>
-        <h4> Contact</h4>
-        <button onClick={() => history.push("/about")}>Go About</button>
-      </div>)}
-    />
-    <Route path="/about" name="About" component={()=><p>Ab</p>}/>
-  </Switch>
-</Router> */}
-
-// store.dispatch(push('/foo'))
