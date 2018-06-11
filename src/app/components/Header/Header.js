@@ -10,9 +10,7 @@ class Header extends Component {
         super(props);
     }
     handleClickEvent = (path) => {
-        console.log('path', path);
         this.props.dispatch(push(`/${path}`));
-        // this.props.history.push(`/${path}`);
     }
     render() {
         return (
@@ -34,7 +32,7 @@ class Header extends Component {
                                     <NavLink exact activeClassName="active" to='/about'>About</NavLink>
                                 </li>
                                 <li className="navbar-brand">
-                                    <a href={`/link`}>Link</a>
+                                    <a onClick={() => this.handleClickEvent('list')}>List</a>
                                 </li>
                                 <li className="navbar-brand">
                                     <NavLink exact activeClassName="active" to='/contact'>Contact</NavLink>

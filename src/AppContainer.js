@@ -17,38 +17,25 @@ class AppContainer extends Component {
 		return (
 			<div className="AppContainer">
 				<Header location={location} />
-				{/* <ReduxElements/> */}
 				<div className="page-content">
 					<div className="container">
-						{/* <Switch history={history} location={location}>
-							<Route exact path="/" name="ReduxElements" component={ReduxElements} />
-							<Route path="/home" name="Home" component={ReduxElements} />
-							<Route path="/about" name="about" component={() => <h4> About</h4>} />
-							<Route path="/contact" name="contact" component={ContactForm} />
-							<Route path="/link" name="link" component={() => <h4> Link</h4>} />
-						</Switch> */}
 						<Switch history={history} location={location}>
 							{ routes.map((route, idx) => {
 								if (route.component) {
 									return (
-										<Route 
-											key={idx} 
-											path={route.path} 
-											exact={route.exact} 
-											name={route.name} 
-											render={(props) => (<route.component {...props}/>)} 
+										<Route
+											key={idx}
+											path={route.path}
+											exact={route.exact}
+											name={route.name}
+											render={(props) => (<route.component {...props}/>)}
 										/>
 									)
 								} else {
 									return null;
-								}					
-								// return route.component ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
-								// 	<route.component {...props} />
-								// )} />)
-								// : (null);
-							},
-							) }
-							<Redirect from="/" to="/dashboard" />
+								}
+							})}
+							<Redirect from="/" to="/home" />
 						</Switch>
 					</div>
 				</div>
