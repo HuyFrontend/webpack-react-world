@@ -11,7 +11,7 @@ class Footer extends Component {
                 <div className="container">
                     <div className="page-footer font-small blue pt-4 mt-4">
                         <div>
-                            <h5 className="text-uppercase">Footer Content</h5>
+                            <h5 className="text-uppercase">Angular 6 WEPACK</h5>
                             <p>Here you can use rows and columns here to organize your footer content.</p>
                         </div>
                         <div className="footer-copyright text-center py-3">© 2018 Copyright:

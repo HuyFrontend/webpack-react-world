@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import './Header.scss';
-import logo from '../../../assets/images/logo.svg';
-import { NavLink, withRouter } from 'react-router-dom';
+// import logo from '../../../assets/images/logo.svg';
+import logo from '../../../assets/images/angular_logo.png';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
+import navigations from '../../constants/navigations';
+import { Helpers } from '../../helpers/helpers';
+
 class Header extends Component {
     constructor(props) {
         super(props);
     }
     handleClickEvent = (path) => {
         this.props.dispatch(push(`/${path}`));
+    }
+    get navigations() {
+        return Helpers.sortArrayByKey(navigations, 'index');
     }
     render() {
         return (
@@ -24,22 +31,8 @@ class Header extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-9 col-md-9 col-lg-9 col-xl-9 float-right">
-                                <li className="navbar-brand">
-                                    {/* <NavLink exact activeClassName="active" to='/'>Home</NavLink> */}
-                                    <a onClick={() => this.handleClickEvent('')}>Home</a>
-                                </li>
-                                <li className="navbar-brand">
-                                    <NavLink exact activeClassName="active" to='/about'>About</NavLink>
-                                </li>
-                                <li className="navbar-brand">
-                                    <a onClick={() => this.handleClickEvent('list')}>List</a>
-                                </li>
-                                <li className="navbar-brand">
-                                    <NavLink exact activeClassName="active" to='/contact'>Contact</NavLink>
-                                </li>
-                                <li className="navbar-brand">
-                                    <a onClick={() => this.handleClickEvent('contact')}>Contact</a>
-                                </li>
+                                
+                                <NaviItem list={this.navigations} targetEvent={this.handleClickEvent}/>
                             </div>
                         </div>
                     </nav>
@@ -53,5 +46,15 @@ Header.propTypes = {
 }
 const mapStateToProps = (state, ownProps) => {
     return Object.assign({}, state, ownProps);
+};
+const NaviItem = ({list, targetEvent}) => {
+    return list && list.length ?
+        list.map((item, index) => {
+            return (
+                <li key={index} className="navbar-brand">
+                    <a onClick={() => targetEvent(item.path)}>{item.name}</a>
+                </li>
+            )
+        }) : null;
 };
 export default withRouter(connect(mapStateToProps)(Header));

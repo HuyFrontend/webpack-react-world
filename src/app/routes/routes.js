@@ -19,11 +19,24 @@ const Contact = Loadable({
     loader: () => import('./../components/Forms/ContactForm'),
     loading: Loading
 });
+
+const AdvancedPatterns = Loadable({
+    loader: () => import('./../components/AdvancedPatterns/AdvancedPatterns'),
+    loading: Loading
+});
+
+const Family = Loadable({
+    loader: () => import('./../components/Family/Family'),
+    loading: Loading
+});
+
 const routes = [
-    { path: '/', exact: true, name: 'Home', component: Home },
+    { path: '/', exact: true, name: 'Main', component: Home },
     { path: '/home', name: 'Home', component: Home },
     { path: '/contact', name: 'Contact', component: Contact },
     { path: '/list', name: 'BookList', component: BookList },
+    { path: '/advanced', name: 'AdvancedPatterns', component: AdvancedPatterns },
+    { path: '/family', name: 'Family', component: Family }
 ];
 
 export default routes;

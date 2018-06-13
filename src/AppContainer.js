@@ -3,15 +3,17 @@ import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './AppContainer.scss';
 import Header from './app/components/Header/Header';
 import Footer from './app/components/Footer/Footer';
-// import ReduxElements from './app/components/ReduxElements/ReduxElements';
 import { history } from './app/constants/constants';
 import { connect } from 'react-redux';
-// import ContactForm from './app/components/Forms/ContactForm';
 import routes from './app/routes/routes';
-
+import OverLay from './app/components/OverLay/OverLay';
+import PropTypes from 'prop-types';
 class AppContainer extends Component {
     constructor() {
 		super();
+	}
+	get routes() {
+		return routes;
 	}
 	render() {
 		return (
@@ -20,7 +22,7 @@ class AppContainer extends Component {
 				<div className="page-content">
 					<div className="container">
 						<Switch history={history} location={location}>
-							{ routes.map((route, idx) => {
+							{ this.routes.map((route, idx) => {
 								if (route.component) {
 									return (
 										<Route
@@ -35,18 +37,28 @@ class AppContainer extends Component {
 									return null;
 								}
 							})}
-							<Redirect from="/" to="/home" />
+							<Redirect from="/" to="/advanced" />
 						</Switch>
 					</div>
 				</div>
-				<Footer />
+				<Footer/>
+				<OverLay isLoading={this.props.isLoading}/>
 			</div>
 		);
 	}
 }
+AppContainer.defaultProps = {
+	isLoading: false
+};
+AppContainer.propTypes = {
+	isLoading: PropTypes.bool
+};
 const mapStateToProps = (state, ownProps) => {
-	const obj = Object.assign({}, state, ownProps);
-	return obj;
-
+	const bookList = state.bookList;
+    return {
+		state,
+        isLoading: bookList && bookList.isLoading ? true : false,
+        ...ownProps
+    }
 };
 export default withRouter(connect(mapStateToProps)(AppContainer));
