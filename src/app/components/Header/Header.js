@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, StrictMode } from 'react';
 import './Header.scss';
 // import logo from '../../../assets/images/logo.svg';
 import logo from '../../../assets/images/angular_logo.png';
@@ -21,23 +21,25 @@ class Header extends Component {
     }
     render() {
         return (
-            <header className="Header">
-                <div className="container">
-                    <nav className="navbar navbar-dark bg-dark fixed-top">
-                        <div className="row">
-                            <div className="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                                <div className="header-img">
-                                    <img src={logo} className="logo" alt="logo"/>
+            <StrictMode>
+                <header className="Header">
+                    <div className="container">
+                        <nav className="navbar navbar-dark bg-dark fixed-top">
+                            <div className="row">
+                                <div className="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                    <div className="header-img">
+                                        <img src={logo} className="logo" alt="logo"/>
+                                    </div>
+                                </div>
+                                <div className="col-sm-9 col-md-9 col-lg-9 col-xl-9 float-right">
+                                    
+                                    <NaviItem list={this.navigations} targetEvent={this.handleClickEvent}/>
                                 </div>
                             </div>
-                            <div className="col-sm-9 col-md-9 col-lg-9 col-xl-9 float-right">
-                                
-                                <NaviItem list={this.navigations} targetEvent={this.handleClickEvent}/>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </header>
+                        </nav>
+                    </div>
+                </header>
+            </StrictMode>
         );
     }
 }
