@@ -43,7 +43,7 @@ class ReduxBookList extends Component {
         this.props.dispatch(removeBooklist());
     }
     categories = () => {
-        return ['javascript', 'angular', 'php', 'nodejs'];
+        return ['javascript', 'angular', 'php', 'nodejs', 'reactjs'];
     }
     render() {
         return (
